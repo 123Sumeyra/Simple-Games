@@ -41,12 +41,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (activePlayer == player1) {
             btnClicked.text = "X"
             btnClicked.isClickable = false
-            if(checkForVictory(activePlayer)){
-                println(checkForVictory(activePlayer))
-                binding.textViewTurn.text=  "Winner is $activePlayer"
-
-            }
-
             activePlayer = player2
             btnClicked.setBackgroundColor(Color.CYAN)
             binding.textViewTurn.text = "Player2 Turn"
@@ -85,13 +79,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         //Horizontal Victory
        if(btn1 == btn2  && btn2 == btn3){
-           println("Kazandı")
-           binding.textViewTurn.text=  "Winner is $activePlayer"
+           println("Kazandı $activePlayer")
+          // binding.textViewTurn.text=  "Winner is $activePlayer"
            return true
 
        }
         if(btn4 == btn5  && btn5 == btn6){
             binding.textViewTurn.text=  "Winner is $activePlayer"
+            println("Kazandı $activePlayer")
             return true
 
         }
