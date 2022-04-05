@@ -59,7 +59,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             binding.textViewTurn.text = "Player1 Turn"
         }
-        checkForVictory()
+        if (checkForVictory()){
+            binding.textViewTurn.text=  "Winner is $activePlayer"
+            disableButton()
+
+        }
 
 
     }
@@ -81,19 +85,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //Horizontal Victory
        if( (btn1== "X"  && btn2 == "X" && btn3 =="X") || (btn1== "O"  && btn2 == "O" && btn3 =="O")){
 
-           binding.textViewTurn.text=  "Winner is $activePlayer"
 
            return true
 
        }
         if((btn4 == "X"  && btn5 =="X" && btn6 =="X") || (btn4 == "O"  && btn5 =="O" && btn6 =="O")){
-            binding.textViewTurn.text=  "Winner is $activePlayer"
 
             return true
 
         }
         if((btn7 == "X" && btn8 =="X"  &&  btn9 == "X") || (btn7 == "O" && btn8 =="O"  &&  btn9 == "O")){
-            binding.textViewTurn.text=  "Winner is $activePlayer"
 
             return true
 
@@ -102,19 +103,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         //Vertical Victory
         if((btn1 == "X"  && btn4 =="X"  &&  btn7 =="X")||(btn1 == "O"  && btn4 =="O"  &&  btn7 =="O ")){
-            binding.textViewTurn.text=  "Winner is $activePlayer"
 
             return true
 
         }
         if((btn2 =="X" && btn5== "X"  && btn8 == "X") ||(btn2 =="O" && btn5== "O"  && btn8 == "O")){
-            binding.textViewTurn.text=  "Winner is $activePlayer"
 
             return true
 
         }
         if((btn3 == "X" && btn6 =="X"  && btn9 =="X")||(btn3 == "O" && btn6 =="O"  && btn9 =="O")){
-            binding.textViewTurn.text=  "Winner is $activePlayer"
 
             return true
 
@@ -122,19 +120,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         //Diagonal Victory
         if((btn1 =="X" &&  btn5 =="X"  &&  btn9=="X")||(btn1 =="O" &&  btn5 =="O"  &&  btn9=="O")){
-            binding.textViewTurn.text=  "Winner is $activePlayer"
 
             return true
 
         }
         if((btn3 =="X" && btn5=="X"  && btn7 == "X")||(btn3 =="O" && btn5=="O"  && btn7 == "O")){
-            binding.textViewTurn.text=  "Winner is $activePlayer"
 
             return true
 
         }
 
         return false
+
+    }
+
+    fun disableButton(){
+        binding.button1.isEnabled = false
+        binding.button2.isEnabled = false
+        binding.button3.isEnabled = false
+        binding.button4.isEnabled = false
+        binding.button5.isEnabled = false
+        binding.button6.isEnabled = false
+        binding.button7.isEnabled = false
+        binding.button8.isEnabled = false
+        binding.button9.isEnabled = false
 
     }
 
