@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     var player2 = 1
     var activePlayer = player1
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         var btnClicked = findViewById<Button>(view!!.id) // btnClicked = button should be
+
         //btnClicked.setText("X")
         if (activePlayer == player1) {
             btnClicked.text = "X"
@@ -48,22 +50,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-
-
-
         } else {
-            btnClicked.text = "0"
+            btnClicked.text = "O"
             btnClicked.isClickable = false
-            checkForVictory(activePlayer)
+
             activePlayer = player1
             btnClicked.setBackgroundColor(Color.RED)
 
             binding.textViewTurn.text = "Player1 Turn"
         }
+        checkForVictory()
+
 
     }
 
-    private fun checkForVictory(activePlayer:Int):Boolean{
+    private fun checkForVictory():Boolean{
 
         val btn1 =binding.button1.text.toString()
         val btn2 =binding.button2.text.toString()
@@ -78,74 +79,64 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
         //Horizontal Victory
-       if(btn1 == btn2  && btn2 == btn3){
-           println("Kazandı $activePlayer")
-          // binding.textViewTurn.text=  "Winner is $activePlayer"
+       if( (btn1== "X"  && btn2 == "X" && btn3 =="X") || (btn1== "O"  && btn2 == "O" && btn3 =="O")){
+
+           binding.textViewTurn.text=  "Winner is $activePlayer"
+
            return true
 
        }
-        if(btn4 == btn5  && btn5 == btn6){
+        if((btn4 == "X"  && btn5 =="X" && btn6 =="X") || (btn4 == "O"  && btn5 =="O" && btn6 =="O")){
             binding.textViewTurn.text=  "Winner is $activePlayer"
-            println("Kazandı $activePlayer")
+
             return true
 
         }
-        if(btn7 == btn8  && btn8 == btn9){
+        if((btn7 == "X" && btn8 =="X"  &&  btn9 == "X") || (btn7 == "O" && btn8 =="O"  &&  btn9 == "O")){
             binding.textViewTurn.text=  "Winner is $activePlayer"
+
             return true
 
         }
 
 
         //Vertical Victory
-        if(btn1 == btn4  && btn4 == btn7){
+        if((btn1 == "X"  && btn4 =="X"  &&  btn7 =="X")||(btn1 == "O"  && btn4 =="O"  &&  btn7 =="O ")){
             binding.textViewTurn.text=  "Winner is $activePlayer"
+
             return true
 
         }
-        if(btn2 == btn5  && btn5 == btn8){
+        if((btn2 =="X" && btn5== "X"  && btn8 == "X") ||(btn2 =="O" && btn5== "O"  && btn8 == "O")){
             binding.textViewTurn.text=  "Winner is $activePlayer"
+
             return true
 
         }
-        if(btn3 == btn6  && btn6 == btn9){
+        if((btn3 == "X" && btn6 =="X"  && btn9 =="X")||(btn3 == "O" && btn6 =="O"  && btn9 =="O")){
             binding.textViewTurn.text=  "Winner is $activePlayer"
+
             return true
 
         }
 
         //Diagonal Victory
-        if(btn1 == btn5  && btn5 == btn9){
+        if((btn1 =="X" &&  btn5 =="X"  &&  btn9=="X")||(btn1 =="O" &&  btn5 =="O"  &&  btn9=="O")){
             binding.textViewTurn.text=  "Winner is $activePlayer"
+
             return true
 
         }
-        if(btn3 == btn5  && btn5 == btn7){
+        if((btn3 =="X" && btn5=="X"  && btn7 == "X")||(btn3 =="O" && btn5=="O"  && btn7 == "O")){
             binding.textViewTurn.text=  "Winner is $activePlayer"
+
             return true
 
         }
+
         return false
-
-
-
-
-
-        //
-
 
     }
 
-    /*fun sayWinner(){
-        var winner = binding.textViewTurn.text.toString()
-        if( winner == "Player2 Turn"){
-             binding.textViewTurn.text=  "Winner is Player2"
-
-        }else{
-            binding.textViewTurn.text = "Winner is Player2"
-
-        }
-
-    }*/
 
 }
