@@ -13,9 +13,13 @@ import com.sum.tic_tac_toe.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
-    var player1 = 2
-    var player2 = 1
+    val butonArray = arrayListOf<Button>()
+    val btnClickeddArrayId = arrayListOf<Int>()
+    var player1 = 1
+    var player2 = 2
     var activePlayer = player1
+    var passivePlayer =player2
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +27,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        butonArray.add(binding.button1)
+        butonArray.add(binding.button2)
+        butonArray.add(binding.button3)
+        butonArray.add(binding.button4)
+        butonArray.add(binding.button5)
+        butonArray.add(binding.button6)
+        butonArray.add(binding.button7)
+        butonArray.add(binding.button8)
+        butonArray.add(binding.button9)
 
         binding.button1.setOnClickListener(this)
         binding.button2.setOnClickListener(this)
@@ -39,7 +53,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View?) {
-        var btnClicked = findViewById<Button>(view!!.id) // btnClicked = button should be
+        val btnClicked = findViewById<Button>(view!!.id) // any button can click
 
 
         //btnClicked.setText("X")
@@ -48,6 +62,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             btnClicked.isClickable = false
             btnClicked.setBackgroundColor(Color.CYAN)
             activePlayer = player2
+            passivePlayer =player1
             binding.textViewTurn.text = "Player2 Turn"
 
 
@@ -58,13 +73,33 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             btnClicked.isClickable = false
 
             activePlayer = player1
+            passivePlayer =player2
             btnClicked.setBackgroundColor(Color.RED)
 
             binding.textViewTurn.text = "Player1 Turn"
         }
+
         if (checkForVictory()){
-            binding.textViewTurn.text=  "Winner is Player$activePlayer"
+
+            binding.textViewTurn.text=  "Winner is Player$passivePlayer"
             disableButton()
+
+        }
+        else{
+
+            btnClickeddArrayId.add(btnClicked.id)
+           // println(btnClickeddArrayId.size)
+
+            if(btnClickeddArrayId.size == 9){
+                binding.textViewTurn.text=  "There is no winner"
+
+
+
+            }
+
+
+
+
 
         }
 
@@ -85,6 +120,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val btn7 =binding.button7.text.toString()
         val btn8 =binding.button8.text.toString()
         val btn9 =binding.button9.text.toString()
+
 
 
 
@@ -135,6 +171,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         }
 
+
         return false
 
     }
@@ -170,27 +207,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun getBack(){
-        val butonArray = arrayListOf<Button>()
-        butonArray.add(binding.button1)
-        butonArray.add(binding.button2)
-        butonArray.add(binding.button3)
-        butonArray.add(binding.button4)
-        butonArray.add(binding.button5)
-        butonArray.add(binding.button6)
-        butonArray.add(binding.button7)
-        butonArray.add(binding.button8)
-        butonArray.add(binding.button9)
+
         for (i in butonArray){
             i.text = ""
             i.isClickable = true
             i.isEnabled = true
             i.setBackgroundColor(ContextCompat.getColor(this,R.color.purple_500))
         }
-        activePlayer =2
+        activePlayer =1
         binding.textViewTurn.text = "Player1 turn"
+        btnClickeddArrayId.clear()
+
 
 
     }
+
+
+
+
 
 
 }
