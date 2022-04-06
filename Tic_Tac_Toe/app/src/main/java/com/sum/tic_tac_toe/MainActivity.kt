@@ -3,15 +3,17 @@ package com.sum.tic_tac_toe
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.sum.tic_tac_toe.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
-    var player1 = 0
+    var player1 = 2
     var player2 = 1
     var activePlayer = player1
 
@@ -39,12 +41,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         var btnClicked = findViewById<Button>(view!!.id) // btnClicked = button should be
 
+
         //btnClicked.setText("X")
         if (activePlayer == player1) {
             btnClicked.text = "X"
             btnClicked.isClickable = false
-            activePlayer = player2
             btnClicked.setBackgroundColor(Color.CYAN)
+            activePlayer = player2
             binding.textViewTurn.text = "Player2 Turn"
 
 
@@ -60,10 +63,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             binding.textViewTurn.text = "Player1 Turn"
         }
         if (checkForVictory()){
-            binding.textViewTurn.text=  "Winner is $activePlayer"
+            binding.textViewTurn.text=  "Winner is Player$activePlayer"
             disableButton()
 
         }
+
+
+
 
 
     }
@@ -84,7 +90,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         //Horizontal Victory
        if( (btn1== "X"  && btn2 == "X" && btn3 =="X") || (btn1== "O"  && btn2 == "O" && btn3 =="O")){
-
 
            return true
 
@@ -144,6 +149,46 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.button7.isEnabled = false
         binding.button8.isEnabled = false
         binding.button9.isEnabled = false
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val menuInflater = menuInflater
+        menuInflater.inflate(R.menu.menu,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+       //restart
+        /*val intent =intent
+        finish()
+        startActivity(intent)*/
+        getBack()
+
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun getBack(){
+        val butonArray = arrayListOf<Button>()
+        butonArray.add(binding.button1)
+        butonArray.add(binding.button2)
+        butonArray.add(binding.button3)
+        butonArray.add(binding.button4)
+        butonArray.add(binding.button5)
+        butonArray.add(binding.button6)
+        butonArray.add(binding.button7)
+        butonArray.add(binding.button8)
+        butonArray.add(binding.button9)
+        for (i in butonArray){
+            i.text = ""
+            i.isClickable = true
+            i.isEnabled = true
+            i.setBackgroundColor(ContextCompat.getColor(this,R.color.purple_500))
+        }
+        activePlayer =2
+        binding.textViewTurn.text = "Player1 turn"
+
 
     }
 
