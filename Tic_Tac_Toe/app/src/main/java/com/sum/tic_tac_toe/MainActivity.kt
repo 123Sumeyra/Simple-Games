@@ -200,13 +200,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         /*val intent =intent
         finish()
         startActivity(intent)*/
-        getBack()
+        refreshGame()
 
 
         return super.onOptionsItemSelected(item)
     }
 
-    fun getBack(){
+    fun refreshGame(){
 
         for (i in butonArray){
             i.text = ""
