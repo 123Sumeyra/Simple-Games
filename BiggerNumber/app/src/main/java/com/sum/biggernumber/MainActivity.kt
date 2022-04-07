@@ -43,7 +43,21 @@ class MainActivity : AppCompatActivity() {
 
     fun secondButton(view: View) {
         //Compare Number
-        //pick the new randoms
+        var number1 = binding.button.text.toString().toInt()
+        var number2 = binding.button2.text.toString().toInt()
+
+        if(number1 < number2){
+            //Correct Answer
+            //Change background color
+            binding.background.setBackgroundColor(Color.GREEN)
+            Toast.makeText(this, "Correct",Toast.LENGTH_SHORT).show()
+
+        }else{
+            //Show Wrong Answer
+            binding.background.setBackgroundColor(Color.RED)
+            Toast.makeText(this, "Wrong",Toast.LENGTH_SHORT).show()
+        }
+        //Pict the new random number
         generateNumber()
 
     }
