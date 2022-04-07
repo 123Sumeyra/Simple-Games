@@ -20,45 +20,41 @@ class MainActivity : AppCompatActivity() {
 
     fun firstButton(view: View) {
         //Compare the number
-        var number1 = binding.button.text.toString().toInt()
-        var number2 = binding.button2.text.toString().toInt()
+        checkAnswer(true)
 
-        if(number1 > number2){
-            //Correct Answer
-                //Change background color
-            binding.background.setBackgroundColor(Color.GREEN)
-            Toast.makeText(this, "Correct",Toast.LENGTH_SHORT).show()
+        //Pict the new random number
+        generateNumber()
 
-        }else{
-            //Show Wrong Answer
-            binding.background.setBackgroundColor(Color.RED)
-            Toast.makeText(this, "Wrong",Toast.LENGTH_SHORT).show()
-        }
+    }
+    
+    fun secondButton(view: View) {
+        //Compare Number
+        checkAnswer(false)
+
         //Pict the new random number
         generateNumber()
 
     }
 
-
-
-    fun secondButton(view: View) {
-        //Compare Number
+    private fun checkAnswer(isLeftButtonSelected:Boolean){
         var number1 = binding.button.text.toString().toInt()
         var number2 = binding.button2.text.toString().toInt()
 
-        if(number1 < number2){
-            //Correct Answer
-            //Change background color
-            binding.background.setBackgroundColor(Color.GREEN)
-            Toast.makeText(this, "Correct",Toast.LENGTH_SHORT).show()
-
-        }else{
-            //Show Wrong Answer
-            binding.background.setBackgroundColor(Color.RED)
-            Toast.makeText(this, "Wrong",Toast.LENGTH_SHORT).show()
+        val isAnswerCorrect = if (isLeftButtonSelected) number1 > number2 else number2 > number1
+        val toastMessage: String
+        val backgroundColor: Int
+        if (isAnswerCorrect) {
+            toastMessage = "Correct!!"
+            backgroundColor = Color.GREEN
+        } else {
+            toastMessage = "Wrong"
+            backgroundColor = Color.RED
         }
-        //Pict the new random number
-        generateNumber()
+        Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
+        binding.background.setBackgroundColor(backgroundColor)
+
+
+
 
     }
     private fun generateNumber() {
