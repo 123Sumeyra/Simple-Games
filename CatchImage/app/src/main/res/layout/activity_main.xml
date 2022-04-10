@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+
+    >
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="294dp"
+        android:layout_height="283dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="230dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textScore"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:onClick="increaseScore"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            app:layout_column="0"
+            app:layout_row="0"
+            app:srcCompat="@drawable/ic_run"
+            app:tint="@color/purple_200" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:onClick="increaseScore"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            app:layout_column="1"
+            app:layout_row="0"
+            app:srcCompat="@drawable/ic_run"
+            app:tint="@color/brown"/>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:onClick="increaseScore"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            app:layout_column="2"
+            app:layout_row="0"
+            app:srcCompat="@drawable/ic_run"
+            app:tint="@color/pink"/>
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:onClick="increaseScore"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            android:layout_marginStart="16dp"
+            app:layout_column="0"
+            app:layout_row="1"
+            app:srcCompat="@drawable/ic_run"
+            app:tint="@color/purple_700"/>
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:onClick="increaseScore"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            app:layout_column="1"
+            app:layout_row="1"
+            app:srcCompat="@drawable/ic_run"
+            app:tint="@color/turkuaz"/>
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:onClick="increaseScore"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            app:layout_column="2"
+            app:layout_row="1"
+            app:srcCompat="@drawable/ic_run"
+            app:tint="@color/black"/>
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:onClick="increaseScore"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            app:layout_column="0"
+            app:layout_row="2"
+            app:srcCompat="@drawable/ic_run"
+            app:tint="@color/purple_500"/>
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:onClick="increaseScore"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            app:layout_column="1"
+            app:layout_row="2"
+            app:srcCompat="@drawable/ic_run"
+            app:tint="@color/teal_200"/>
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:onClick="increaseScore"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            app:layout_column="2"
+            app:layout_row="2"
+            app:srcCompat="@drawable/ic_run"
+            app:tint="@color/teal_700"/>
+    </androidx.gridlayout.widget.GridLayout>
+
+    <!--android:background="@drawable/rectangle"-->
+    <TextView
+        android:id="@+id/textTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="69dp"
+        android:layout_marginBottom="4dp"
+        android:text="Time:15"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="56dp"
+        android:text="Score: 0"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="@+id/textTime"
+        app:layout_constraintTop_toBottomOf="@+id/textTime"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>

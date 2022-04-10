@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         generateNumber()
 
     }
-    
+
     fun secondButton(view: View) {
         //Compare Number
         checkAnswer(false)
@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity() {
             rightNumber= (0..100).random()
 
         }
+
         binding.button.text = lefNumber.toString()
         binding.button2.text = rightNumber.toString()
     }
