@@ -4,8 +4,8 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
 import android.view.View
-import android.view.View.INVISIBLE
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +15,8 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var imageArray: ArrayList<ImageView>
+    var handler =Handler()
+    var runnable = Runnable {  }
     var score = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +44,8 @@ class MainActivity : AppCompatActivity() {
             override fun onFinish() {
 
                 binding.textTime.text = "Time: 0"
+                handler.removeCallbacks(runnable)
+                doInvisible()
                 alertMessage()
             }
 
@@ -82,15 +86,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun hideImages(){
-        for(image in imageArray){
-            image.visibility =INVISIBLE
+        runnable = object:Runnable{
+            override fun run() {
+                doInvisible()
+                choseOneImage()
+                handler.postDelayed(runnable,500)
+            }
+
         }
-        choseOneImage()
+        handler.post(runnable)
+
     }
 
     fun choseOneImage(){
         val random = Random()
         val randomIndex =random.nextInt(9)
         imageArray[randomIndex].visibility = View.VISIBLE
+    }
+    fun doInvisible(){
+        for(image in imageArray){
+            image.visibility = View.INVISIBLE
+        }
     }
 }
