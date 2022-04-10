@@ -8,7 +8,6 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sum.catchimage.databinding.ActivityMainBinding
 import java.util.*
@@ -16,8 +15,8 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var imageArray: ArrayList<ImageView>
-    var handler =Handler(Looper.getMainLooper())
-    var runnable = Runnable {  }
+    var handler =Handler(Looper.getMainLooper()) // help you sent process message or runnable objects
+    var runnable = Runnable {  } // is a interface you should override run method.
     var score = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +64,7 @@ class MainActivity : AppCompatActivity() {
         score += 1
         binding.textScore.text = "Score: $score"
         // Toast.makeText(this@MainActivity,"Sum",Toast.LENGTH_SHORT).show()
+        println("Çalışıyor mu bakalım")
     }
 
 
@@ -80,7 +80,8 @@ class MainActivity : AppCompatActivity() {
 
 
             }).setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, id ->
-                Toast.makeText(this@MainActivity, "NO", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this@MainActivity, "NO", Toast.LENGTH_SHORT).show()
+                finish()
 
             }).show()
 
@@ -91,11 +92,11 @@ class MainActivity : AppCompatActivity() {
             override fun run() {
                 doInvisible()
                 choseOneImage()
-                handler.postDelayed(runnable,500)
+                handler.postDelayed(runnable,550)
             }
 
         }
-        handler.post(runnable)
+        handler.post(runnable) // to sent runnable object
 
     }
 
