@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
@@ -15,7 +16,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var imageArray: ArrayList<ImageView>
-    var handler =Handler()
+    var handler =Handler(Looper.getMainLooper())
     var runnable = Runnable {  }
     var score = 0
 
@@ -108,4 +109,6 @@ class MainActivity : AppCompatActivity() {
             image.visibility = View.INVISIBLE
         }
     }
+
+
 }
